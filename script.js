@@ -1,5 +1,6 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
+var first = document.getElementById("first");
 var counter=0;
 
 var notBlock = true;
@@ -30,9 +31,12 @@ highScoreRefs.limit(4).get()
             id: doc.id,
             ...doc.data(),
         }));
-        console.log(data);
+        console.log("data:",data);
+        console.log("data[0][2]:",data[0][2]);
+        first.innerHTML = data[0][2]['Name'];
 
     });
+
 
 function jump(){
     if(character.classList == "animate"){return}
@@ -58,7 +62,8 @@ var checkDead = setInterval(function() {
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
             console.log("counter"+counter)
             docRef.update({
-            "1": Math.floor(counter/100)
+            "1": {"Name":"Leon",
+                "Value":Math.floor(counter/100)}
         })
             highScore(counter);
             toggle_visibility();
@@ -88,3 +93,10 @@ function highScore(counter) {
    return;
 }
 
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
