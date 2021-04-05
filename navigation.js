@@ -1,7 +1,5 @@
 function submitForm(){
     console.log("SUBMIT FORM 2")
-    console.log("Ref", highScoreRefs)
-    console.log("Data: ", highScores);
     
     const name = document.getElementById("usernamex").value;
     setCookie("SMDCookie",name,7);
