@@ -1,8 +1,8 @@
-import "globalVariables.js";
+// import name from './globalVariables.js';
 
 function submitForm(){
     console.log("SUBMIT FORM 2")
-    console.log(name)
+    // console.log(name)
     window.location.href = "game.html";
 }
 

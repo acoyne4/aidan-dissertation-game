@@ -1,8 +1,9 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
-var first = document.getElementById("first");
+var first = document.getElementById("firstName");
 var counter=0;
 var name = "unknown";
+var highScores;
 
 var notBlock = true;
 
@@ -34,8 +35,17 @@ highScoreRefs.limit(4).get()
         }));
         console.log("data:",data);
         console.log("data[0][2]:",data[0][2]);
-        first.innerHTML = data[0][2]['Name'];
+        highScores = data[0];
+        console.log("highScores: ", highScores)
+        document.getElementById("firstName").innerHTML = highScores[1]['Name'];
+        document.getElementById("secondName").innerHTML = highScores[2]['Name'];
+        document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
+        document.getElementById("fourthName").innerHTML = highScores[4]['Name'];
 
+        document.getElementById("firstValue").innerHTML = highScores[1]['Value'];
+        document.getElementById("secondValue").innerHTML = highScores[2]['Value'];
+        document.getElementById("thirdValue").innerHTML = highScores[3]['Value'];
+        document.getElementById("fourthValue").innerHTML = highScores[4]['Value'];
     });
 
 
@@ -63,24 +73,46 @@ var checkDead = setInterval(function() {
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(notBlock) {
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
-            console.log("counter"+counter)
-            docRef.update({
-            "1": {"Name":"Leon",
-                "Value":Math.floor(counter/100)}
-        })
+            console.log("COOKIE: ", getCookie("SMDCookie"))
+            notBlock=false;
+            const tempScore = Math.floor(counter/100)
+            console.log("tempScore0:", highScores);
+            if(tempScore > highScores[4]['Value']){
+                var i = 4;
+                while( i>1 && tempScore > highScores[i-1]['Value']){
+                    i=i-1;
+                    console.log("i: ",i)
+                }
+                console.log("i2: ",i);
+                console.log("tempScore1:", highScores);
+                // var newHighScores = Object.create(highScores);
+                for(var k=4; k>i;k--){
+                    const tempValue = highScores[k-1]['Value'];
+                    const tempName = highScores[k-1]['Name'];
+                    highScores[k]['Value'] = tempValue;
+                    highScores[k]['Name'] = tempName;
+                }
+                console.log("tempScore2:", highScores);
+                highScores[i]['Value']=tempScore;
+                highScores[i]['Name']=name;
+                console.log("tempScore3:", highScores);
+                docRef.update(
+                    highScores)
+            }
+            console.log("Name: "+name)
             highScore(counter);
             toggle_visibility();
             document.getElementById("game-over").innerHTML = "Game Over | " +
                 "Score: " + Math.floor(counter/100) + "<br />"
                 + "High Score: " + Math.floor(window.localStorage.getItem('highScore')/100) +
                 "<br />" + "Click screen to restart";
-            notBlock=false;
         }else{
             counter++;
             document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
         }
     }
 }, 10);
+
 
 function highScore(counter) {
     highScore = window.localStorage.getItem('highScore')
@@ -97,4 +129,61 @@ function highScore(counter) {
 }
 
 
+function submitForm(){
+    console.log("SUBMIT FORM 2")
+    console.log("Ref", highScoreRefs)
+    console.log("Data: ", highScores);
+    
+    const name = document.getElementById("usernamex").value;
+    setCookie("SMDCookie",name,7);
+    console.log("Name: ", name);
+    console.log("COOKIE: ", getCookie("SMDCookie"));
+    const tempX = getCookie("SMDCookie");
+    console.log("COOKIE2: "+ tempX);
+    console.log(document.cookie);
+    // console.log(window.myGlobal)
+    // window.location.href = "game.html";
+}
 
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function gameRef(){
+    if (name =="unknown"){
+        window.location.href = "login.html";
+        console.log("UNKNOWN")
+    }
+       
+   else
+       window.location.href = "game.html";
+}
+ 
+ function setCookie(name,value,days) {
+     if (days) {
+         var date = new Date();
+         date.setTime(date.getTime()+(days*24*60*60*1000));
+         var expires = "; expires="+date.toGMTString();
+     }
+     else var expires = "";
+     document.cookie = name+"="+value+expires+"; path=/";
+ }
+
+ function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+       return c.substring(name.length, c.length);
+      }
+     }
+   return "";
+ }
