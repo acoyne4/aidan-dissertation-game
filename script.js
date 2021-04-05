@@ -2,7 +2,7 @@ var character = document.getElementById("character");
 var block = document.getElementById("block");
 var first = document.getElementById("firstName");
 var counter=0;
-var name = "unknown";
+var name = getCookie("SMDCookie");
 var highScores;
 
 var notBlock = true;
@@ -72,7 +72,6 @@ var checkDead = setInterval(function() {
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(notBlock) {
-            console.log("COOKIE: ", getCookie("SMDCookie"));
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
             console.log("COOKIE: ", getCookie("SMDCookie"))
             notBlock=false;

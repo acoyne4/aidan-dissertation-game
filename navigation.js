@@ -1,3 +1,5 @@
+var name = getCookie("SMDCookie");
+
 function submitForm(){
     console.log("SUBMIT FORM 2")
     
@@ -21,7 +23,7 @@ function openForm() {
 }
 
 function gameRef(){
-    if (name =="unknown"){
+    if (name){
         window.location.href = "login.html";
         console.log("UNKNOWN")
     }
