@@ -72,6 +72,7 @@ var checkDead = setInterval(function() {
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(notBlock) {
+            console.log("COOKIE: ", getCookie("SMDCookie"));
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
             console.log("COOKIE: ", getCookie("SMDCookie"))
             notBlock=false;
@@ -127,51 +128,6 @@ function highScore(counter) {
         window.localStorage.setItem('highScore',''+ counter)    }
    return;
 }
-
-
-function submitForm(){
-    console.log("SUBMIT FORM 2")
-    console.log("Ref", highScoreRefs)
-    console.log("Data: ", highScores);
-    
-    const name = document.getElementById("usernamex").value;
-    setCookie("SMDCookie",name,7);
-    console.log("Name: ", name);
-    console.log("COOKIE: ", getCookie("SMDCookie"));
-    const tempX = getCookie("SMDCookie");
-    console.log("COOKIE2: "+ tempX);
-    console.log(document.cookie);
-    // console.log(window.myGlobal)
-    // window.location.href = "game.html";
-}
-
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-}
-
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function gameRef(){
-    if (name =="unknown"){
-        window.location.href = "login.html";
-        console.log("UNKNOWN")
-    }
-       
-   else
-       window.location.href = "game.html";
-}
- 
- function setCookie(name,value,days) {
-     if (days) {
-         var date = new Date();
-         date.setTime(date.getTime()+(days*24*60*60*1000));
-         var expires = "; expires="+date.toGMTString();
-     }
-     else var expires = "";
-     document.cookie = name+"="+value+expires+"; path=/";
- }
 
  function getCookie(cname) {
     var name = cname + "=";
