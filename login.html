@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" onkeydown="jump()">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -34,43 +34,19 @@
   </div>
 </div>
 
-<div class="game" onclick="restart()">
-    <div id="game-over"></div>
-    <div id="character"></div>
-    <div id="block"></div>
+
+<div class="form-popup" id="myForm" align="center">
+  <form class="form-container">
+    <h1>Login</h1>
+
+    <label for="Username"><b>Email</b></label>
+    <input type="text" placeholder="Enter username" name="email">
+
+    <button type="reset" class="btn" onclick="submitForm()">Submit</button>
+    <button type="reset" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
 </div>
-<p id="score">Score: <span id="scoreSpan"></span></p>
-
-<div class="containerleaderboard">
-		<div class="leaderboard">
-			<div class="head">
-				<h1>Top Scores</h1>
-			</div>
-			<div class="body">
-				<ol>
-					<li>
-						<mark id="first">Jerry Wood</mark>
-						<small>948</small>
-					</li>
-					<li>
-						<mark id="second">Brandon Barnes</mark>
-						<small>750</small>
-					</li>
-					<li>
-						<mark id="third">Raymond Knight</mark>
-						<small>684</small>
-					</li>
-					<li>
-						<mark id="fourth">Trevor McCormick</mark>
-						<small>335</small>
-					</li>
-
-				</ol>
-			</div>
-		</div>
-	</div>
 
 </body>
-<script src="script.js"></script>
+<script type="module" src="navigation.js"></script>
 </html>
-

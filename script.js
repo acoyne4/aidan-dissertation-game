@@ -2,6 +2,7 @@ var character = document.getElementById("character");
 var block = document.getElementById("block");
 var first = document.getElementById("first");
 var counter=0;
+var name = "unknown";
 
 var notBlock = true;
 
@@ -45,6 +46,8 @@ function jump(){
         character.classList.remove("animate");
     },300);
 }
+
+
 
 function toggle_visibility(id) {
     document.getElementById("score").style.visibility = "hidden"
@@ -93,10 +96,5 @@ function highScore(counter) {
    return;
 }
 
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+
