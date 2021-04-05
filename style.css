@@ -1,0 +1,130 @@
+.body{
+    background-color:black;
+}
+
+.game{
+    position:relative;
+    top:150px;
+    width: 500px;
+    height: 200px;
+    margin: auto;
+    border: 2px solid black;
+    overflow: hidden;
+
+}
+
+#score {
+    visibility: visible;
+    font-size:18px;
+}
+
+#game-over{
+    top: 20%;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    color: #d7514d;
+
+
+}
+#character{
+    width: 20px;
+    height: 50px;
+    background-color: red;
+    position:relative;
+    top: 150px;
+}
+.animate{
+    animation: jump 0.3s linear;
+}
+@keyframes jump{
+    0%{top: 150px;}
+    30%{top: 100px;}
+    70%{top: 100px;}
+    100%{top: 150px;}
+}
+
+#block{
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 130px;
+    left: 500px;
+    animation: block 1s infinite linear;
+}
+@keyframes block{
+
+    0%{left: 500px}
+    100%{left: -20px}
+}
+p{
+    top:150px;
+    position: relative;
+    text-align: center;
+}
+
+/* container */
+.containerleaderboard {
+    box-sizing: border-box;
+	width: 300px;
+	height: auto;
+	border-radius: 1px;
+	position: absolute;
+	top: 400px;
+	left: 50%;
+	transform: translate(-50%);
+	z-index: 1;
+	overflow: hidden;
+}
+
+/* leaderboard */
+.leaderboard {
+	background: linear-gradient(to bottom, #3a404d, #181c26);
+}
+
+/* head */
+.leaderboard .head {
+	color: snow;
+	font-size: 15px;
+	text-align: center;
+}
+.leaderboard .head h1 {
+	display: inline-block;
+	margin-left: 4px;
+}
+
+/* body */
+.leaderboard .body {
+	color: snow;
+	font-size:  15px;
+}
+.leaderboard ol {
+	counter-reset: number;
+}
+.leaderboard li {
+	padding: 15px;
+	display: flex;
+}
+.leaderboard li mark {
+	flex-grow: 1;
+	color: snow;
+	background-color: transparent;
+}
+.leaderboard li:before {
+	counter-increment: number; /* 遞增計數器 */
+	content: counter(number) "."; /* 顯示計數器 */
+	margin-right: 4px;
+}
+.leaderboard li:nth-child(1) {
+	background: #fa6855;
+}
+.leaderboard li:nth-child(2) {
+	background: #e0574f;
+}
+.leaderboard li:nth-child(3) {
+	background: #d7514d;
+}
+.leaderboard li:nth-child(4) {
+	background: #cd4b4b;
+}

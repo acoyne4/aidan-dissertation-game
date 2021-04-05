@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" onclick="restart()" onkeydown="jump()">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jump Game</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+<style>
+    body{font-family: "Times New Roman", Georgia, Serif;}
+    ht, h2, h3, h4, h5, h6 {
+        font-family: "Playfair Display";
+        letter-spacing: 1px;
+    }
+</style>
+</head>
+<body>
+
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+<!--    <a href="#home" class="w3-bar-item w3-button"></a>-->
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="index.html" class="w3-bar-item w3-button">About</a>
+      <a href="game.html" class="w3-bar-item w3-button">The Game</a>
+    </div>
+  </div>
+</div>
+<div class="game">
+    <div id="game-over"></div>
+    <div id="character"></div>
+    <div id="block"></div>
+</div>
+<p id="score">Score: <span id="scoreSpan"></span></p>
+
+<div class="containerleaderboard">
+		<div class="leaderboard">
+			<div class="head">
+				<h1>Top Scores</h1>
+			</div>
+			<div class="body">
+				<ol>
+					<li>
+						<mark id="first">Jerry Wood</mark>
+<!--						<small>948</small>-->
+					</li>
+					<li>
+						<mark id="second">Brandon Barnes</mark>
+						<small>750</small>
+					</li>
+					<li>
+						<mark id="third">Raymond Knight</mark>
+						<small>684</small>
+					</li>
+					<li>
+						<mark id="fourth">Trevor McCormick</mark>
+						<small>335</small>
+					</li>
+
+				</ol>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script src="script.js"></script>
+</html>
+
