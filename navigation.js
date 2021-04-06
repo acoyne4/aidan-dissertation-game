@@ -1,21 +1,17 @@
 var name = getCookie("SMDCookie");
 
 function submitForm(){
-    console.log("SUBMIT FORM 2")
-    
+    console.log("SUBMIT FORM")
     const name = document.getElementById("usernamex").value;
     setCookie("SMDCookie",name,7);
-    console.log("Name: ", name);
-    console.log("COOKIE: ", getCookie("SMDCookie"));
-    const tempX = getCookie("SMDCookie");
-    console.log("COOKIE2: "+ tempX);
-    console.log(document.cookie);
-    // console.log(window.myGlobal)
     window.location.href = "game.html";
 }
 
 function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    console.log("CLOSE FORM")
+    const name = "anonymous";
+    setCookie("SMDCookie",name,7);
+    window.location.href = "game.html";
 }
 
 function openForm() {
@@ -23,9 +19,10 @@ function openForm() {
 }
 
 function gameRef(){
+  console.log("name: ", name);
+  console.log("typeof(name)", typeof(name));
     if (name){
         window.location.href = "login.html";
-        console.log("UNKNOWN")
     }
        
    else
