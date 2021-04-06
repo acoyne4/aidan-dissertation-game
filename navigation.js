@@ -20,11 +20,11 @@ function openForm() {
 
 function gameRef(){
   // console.log("str.replace", name.replace(/\s/g,"") == "");
-    if (isEmpty(name) || name=="anonymous"){
-        window.location.href = "login.html";
-    }
+  //   if (isEmpty(name) || name=="anonymous"){
+  //       window.location.href = "login.html";
+  //   }
        
-   else
+  //  else
        window.location.href = "game.html";
 }
 

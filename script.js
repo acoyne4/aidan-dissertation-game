@@ -3,7 +3,8 @@ var block = document.getElementById("block");
 var first = document.getElementById("firstName");
 var counter=0;
 var name = getCookie("SMDCookie");
-var highScores;
+var highScores = getCookie("HighScore");
+
 
 var notBlock = true;
 
@@ -36,7 +37,7 @@ highScoreRefs.limit(4).get()
         console.log("data:",data);
         console.log("data[0][2]:",data[0][2]);
         highScores = data[0];
-        console.log("highScores: ", highScores)
+        console.log("highScores: ", highScores);
         document.getElementById("firstName").innerHTML = highScores[1]['Name'];
         document.getElementById("secondName").innerHTML = highScores[2]['Name'];
         document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
@@ -46,6 +47,8 @@ highScoreRefs.limit(4).get()
         document.getElementById("secondValue").innerHTML = highScores[2]['Value'];
         document.getElementById("thirdValue").innerHTML = highScores[3]['Value'];
         document.getElementById("fourthValue").innerHTML = highScores[4]['Value'];
+
+        isPaused = false;
     });
 
 
@@ -73,7 +76,8 @@ var checkDead = setInterval(function() {
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(notBlock) {
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
-                while(!highScores){}
+                console.log("Highscore", highScores);
+                console.log("type of Highscore", typeof(highScores));
                 console.log("COOKIE: ", getCookie("SMDCookie"))
                 notBlock=false;
                 const tempScore = Math.floor(counter/100)
@@ -107,13 +111,13 @@ var checkDead = setInterval(function() {
                     "Score: " + Math.floor(counter/100) + "<br />"
                     + "High Score: " + Math.floor(window.localStorage.getItem('highScore')/100) +
                 "<br />" + "Click screen to restart";
+                setCookie("HighScore",highScores,1);
         }else{
             counter++;
             document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
         }
     }
 }, 10);
-
 
 function highScore(counter) {
     highScore = window.localStorage.getItem('highScore')
@@ -143,3 +147,14 @@ function highScore(counter) {
      }
    return "";
  }
+
+
+ function setCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
