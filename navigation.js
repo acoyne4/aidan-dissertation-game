@@ -21,9 +21,9 @@ function openForm() {
 function gameRef(){
   console.log("name: ", name);
   console.log("typeof(name)", typeof(name));
-  console.log("isempty(): ", isEmpty(name));
-  console.log("name.isempty(): ", name.isEmpty());
+  // console.log("isempty(): ", isEmpty(name));
   console.log("isBlank(): ", isBlank(name));
+  console.log("name.isempty(): ", name.isEmpty());
   console.log("str.replace", name.replace(/\s/g,"") == "")
     if (name){
       console.log("unknown");
