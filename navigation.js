@@ -24,6 +24,14 @@ function gameRef(){
   console.log("isempty(): ", isEmpty(name));
   console.log("isBlank(): ", isBlank(name));
   console.log("name.isempty(): ", name.isEmpty());
+  console.log("str.replace", name.replace(/\s/g,"") == "");
+  console.log("********* CHANGE ***************");
+  name="Leon"
+  console.log("name: ", name);
+  console.log("typeof(name)", typeof(name));
+  console.log("isempty(): ", isEmpty(name));
+  console.log("isBlank(): ", isBlank(name));
+  console.log("name.isempty(): ", name.isEmpty());
   console.log("str.replace", name.replace(/\s/g,"") == "")
     if (name){
       console.log("unknown");
