@@ -21,6 +21,10 @@ function openForm() {
 function gameRef(){
   console.log("name: ", name);
   console.log("typeof(name)", typeof(name));
+  console.log("isempty(): ", isEmpty(name));
+  console.log("name.isempty(): ", name.isEmpty());
+  console.log("isBlank(): ", isBlank(name));
+  console.log("str.replace", name.replace(/\s/g,"") == "")
     if (name){
       console.log("unknown");
         // window.location.href = "login.html";
@@ -29,6 +33,10 @@ function gameRef(){
    else
    console.log("else")
       //  window.location.href = "game.html";
+}
+
+String.prototype.isEmpty = String.prototype.isEmpty || function() {
+  return !(!!this.trim().length);
 }
  
  function setCookie(name,value,days) {
