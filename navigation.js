@@ -22,11 +22,13 @@ function gameRef(){
   console.log("name: ", name);
   console.log("typeof(name)", typeof(name));
     if (name){
-        window.location.href = "login.html";
+      console.log("unknown");
+        // window.location.href = "login.html";
     }
        
    else
-       window.location.href = "game.html";
+   console.log("else")
+      //  window.location.href = "game.html";
 }
  
  function setCookie(name,value,days) {
