@@ -1,9 +1,24 @@
 var character = document.getElementById("character");
 var block = document.getElementById("block");
-var first = document.getElementById("first");
+var first = document.getElementById("firstName");
 var counter=0;
+var name = getCookie("SMDCookie");
+var highScores = getCookie("HighScore");
+
 
 var notBlock = true;
+
+if(highScores){
+    document.getElementById("firstName").innerHTML = highScores[1]['Name'];
+    document.getElementById("secondName").innerHTML = highScores[2]['Name'];
+    document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
+    document.getElementById("fourthName").innerHTML = highScores[4]['Name'];
+
+    document.getElementById("firstValue").innerHTML = highScores[1]['Value'];
+    document.getElementById("secondValue").innerHTML = highScores[2]['Value'];
+    document.getElementById("thirdValue").innerHTML = highScores[3]['Value'];
+    document.getElementById("fourthValue").innerHTML = highScores[4]['Value'];
+}
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -33,8 +48,19 @@ highScoreRefs.limit(4).get()
         }));
         console.log("data:",data);
         console.log("data[0][2]:",data[0][2]);
-        first.innerHTML = data[0][2]['Name'];
+        highScores = data[0];
+        console.log("highScores: ", highScores);
+        document.getElementById("firstName").innerHTML = highScores[1]['Name'];
+        document.getElementById("secondName").innerHTML = highScores[2]['Name'];
+        document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
+        document.getElementById("fourthName").innerHTML = highScores[4]['Name'];
 
+        document.getElementById("firstValue").innerHTML = highScores[1]['Value'];
+        document.getElementById("secondValue").innerHTML = highScores[2]['Value'];
+        document.getElementById("thirdValue").innerHTML = highScores[3]['Value'];
+        document.getElementById("fourthValue").innerHTML = highScores[4]['Value'];
+
+        isPaused = false;
     });
 
 
@@ -45,6 +71,8 @@ function jump(){
         character.classList.remove("animate");
     },300);
 }
+
+
 
 function toggle_visibility(id) {
     document.getElementById("score").style.visibility = "hidden"
@@ -60,18 +88,44 @@ var checkDead = setInterval(function() {
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     if(notBlock) {
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
-            console.log("counter"+counter)
-            docRef.update({
-            "1": {"Name":"Leon",
-                "Value":Math.floor(counter/100)}
-        })
-            highScore(counter);
-            toggle_visibility();
-            document.getElementById("game-over").innerHTML = "Game Over | " +
-                "Score: " + Math.floor(counter/100) + "<br />"
-                + "High Score: " + Math.floor(window.localStorage.getItem('highScore')/100) +
+                console.log("Highscore", highScores);
+                console.log("type of Highscore", typeof(highScores));
+                // console.log("COOKIE: ", getCookie("SMDCookie"))
+                notBlock=false;
+                if(highScores){
+                    const tempScore = Math.floor(counter/100)
+                    console.log("tempScore0:", highScores);
+                    if(tempScore > highScores[4]['Value']){
+                        var i = 4;
+                        while( i>1 && tempScore > highScores[i-1]['Value']){
+                            i=i-1;
+                            console.log("i: ",i)
+                        }
+                        console.log("i2: ",i);
+                        console.log("tempScore1:", highScores);
+                        // var newHighScores = Object.create(highScores);
+                        for(var k=4; k>i;k--){
+                            const tempValue = highScores[k-1]['Value'];
+                            const tempName = highScores[k-1]['Name'];
+                            highScores[k]['Value'] = tempValue;
+                            highScores[k]['Name'] = tempName;
+                        }
+                        console.log("tempScore2:", highScores);
+                        highScores[i]['Value']=tempScore;
+                        highScores[i]['Name']=name;
+                        console.log("tempScore3:", highScores);
+                        docRef.update(
+                            highScores)
+                    }
+                    console.log("Name: "+name);
+                }
+                highScore(counter);
+                toggle_visibility();
+                document.getElementById("game-over").innerHTML = "Game Over | " +
+                    "Score: " + Math.floor(counter/100) + "<br />"
+                    + "High Score: " + Math.floor(window.localStorage.getItem('highScore')/100) +
                 "<br />" + "Click screen to restart";
-            notBlock=false;
+                setCookie("HighScore",highScores,1);
         }else{
             counter++;
             document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
@@ -93,6 +147,28 @@ function highScore(counter) {
    return;
 }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+ function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+       return c.substring(name.length, c.length);
+      }
+     }
+   return "";
+ }
+
+
+ function setCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" onkeydown="jump()">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -34,44 +34,18 @@
   </div>
 </div>
 
-<div class="game" onclick="restart()">
-    <div id="game-over"></div>
-    <div id="character"></div>
-    <div id="block"></div>
+
+<div class="form-popup" id="myForm" align="center">
+  <form class="form-container">
+    <h1>Name</h1>
+
+    <label for="Username"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="email" id="usernamex">
+    <button type="reset" class="btn" onclick="submitForm()">Submit</button>
+    <button type="reset" class="btn cancel" onclick="closeForm()" id="formbutton">Close</button>
+  </form>
 </div>
-<p id="score">Score: <span id="scoreSpan"></span></p>
-
-<div class="containerleaderboard">
-		<div class="leaderboard">
-			<div class="head">
-				<h1>Top Scores</h1>
-			</div>
-			<div class="body">
-				<ol>
-					<li>
-						<mark id="firstName">Jerry Wood</mark>
-						<small id="firstValue">948</small>
-					</li>
-					<li>
-						<mark id="secondName">Brandon Barnes</mark>
-						<small id="secondValue">750</small>
-					</li>
-					<li>
-						<mark id="thirdName">Raymond Knight</mark>
-						<small id="thirdValue">684</small>
-					</li>
-					<li>
-						<mark id="fourthName">Trevor McCormick</mark>
-						<small id="fourthValue">335</small>
-					</li>
-
-				</ol>
-			</div>
-		</div>
-	</div>
 
 </body>
-<script src="script.js"></script>
 <script src="./navigation.js" crossorigin="anonymous"></script>
 </html>
-
