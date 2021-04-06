@@ -22,11 +22,12 @@ function gameRef(){
   // console.log("str.replace", name.replace(/\s/g,"") == "");
     if (!isEmpty(name) || name=="anonymous"){
       console.log("unknown");
-        window.location.href = "login.html";
+      console.log(!isEmpty(name))
+        // window.location.href = "login.html";
     }
        
    else
-       window.location.href = "game.html";
+      //  window.location.href = "game.html";
 }
 
 function isEmpty(str) {
