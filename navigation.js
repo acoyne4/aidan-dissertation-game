@@ -19,40 +19,18 @@ function openForm() {
 }
 
 function gameRef(){
-  console.log("name: ", name);
-  console.log("typeof(name)", typeof(name));
-  console.log("isempty(): ", isEmpty(name));
-  console.log("isBlank(): ", isBlank(name));
-  console.log("name.isempty(): ", name.isEmpty());
-  console.log("str.replace", name.replace(/\s/g,"") == "");
-  console.log("********* CHANGE ***************");
-  name="Leon"
-  console.log("name: ", name);
-  console.log("typeof(name)", typeof(name));
-  console.log("isempty(): ", isEmpty(name));
-  console.log("isBlank(): ", isBlank(name));
-  console.log("name.isempty(): ", name.isEmpty());
-  console.log("str.replace", name.replace(/\s/g,"") == "")
-    if (name){
+  // console.log("str.replace", name.replace(/\s/g,"") == "");
+    if (!isEmpty(name) || name=="anonymous"){
       console.log("unknown");
-        // window.location.href = "login.html";
+        window.location.href = "login.html";
     }
        
    else
-   console.log("else")
-      //  window.location.href = "game.html";
+       window.location.href = "game.html";
 }
 
 function isEmpty(str) {
   return (!str || str.length === 0 );
-}
-
-function isBlank(str) {
-  return (!str || /^\s*$/.test(str));
-}
-
-String.prototype.isEmpty = String.prototype.isEmpty || function() {
-  return !(!!this.trim().length);
 }
  
  function setCookie(name,value,days) {
