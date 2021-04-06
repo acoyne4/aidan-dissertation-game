@@ -8,6 +8,18 @@ var highScores = getCookie("HighScore");
 
 var notBlock = true;
 
+if(highScores){
+    document.getElementById("firstName").innerHTML = highScores[1]['Name'];
+    document.getElementById("secondName").innerHTML = highScores[2]['Name'];
+    document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
+    document.getElementById("fourthName").innerHTML = highScores[4]['Name'];
+
+    document.getElementById("firstValue").innerHTML = highScores[1]['Value'];
+    document.getElementById("secondValue").innerHTML = highScores[2]['Value'];
+    document.getElementById("thirdValue").innerHTML = highScores[3]['Value'];
+    document.getElementById("fourthValue").innerHTML = highScores[4]['Value'];
+}
+
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {

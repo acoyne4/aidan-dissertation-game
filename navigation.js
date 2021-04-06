@@ -18,13 +18,27 @@ function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
 
+// var input = document.getElementById("usernamex");
+
+// // Execute a function when the user releases a key on the keyboard
+// input.addEventListener("keyup", function(event) {
+//   console.log("EVENT")
+//   // Number 13 is the "Enter" key on the keyboard
+//   if (event.keyCode === 13) {
+//     console.log("Click 13")
+//     // Cancel the default action, if needed
+//     event.preventDefault();
+//     // Trigger the button element with a click
+//     document.getElementById("formbutton").click();
+//   }
+// });
+
 function gameRef(){
-  // console.log("str.replace", name.replace(/\s/g,"") == "");
-  //   if (isEmpty(name) || name=="anonymous"){
-  //       window.location.href = "login.html";
-  //   }
-       
-  //  else
+  console.log("str.replace", name.replace(/\s/g,"") == "");
+    if (isEmpty(name) || name=="anonymous"){
+        window.location.href = "login.html";
+    }
+   else
        window.location.href = "game.html";
 }
 
