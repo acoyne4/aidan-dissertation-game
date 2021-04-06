@@ -78,33 +78,35 @@ var checkDead = setInterval(function() {
             if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
                 console.log("Highscore", highScores);
                 console.log("type of Highscore", typeof(highScores));
-                console.log("COOKIE: ", getCookie("SMDCookie"))
+                // console.log("COOKIE: ", getCookie("SMDCookie"))
                 notBlock=false;
-                const tempScore = Math.floor(counter/100)
-                console.log("tempScore0:", highScores);
-                if(tempScore > highScores[4]['Value']){
-                    var i = 4;
-                    while( i>1 && tempScore > highScores[i-1]['Value']){
-                        i=i-1;
-                        console.log("i: ",i)
+                if(highScores){
+                    const tempScore = Math.floor(counter/100)
+                    console.log("tempScore0:", highScores);
+                    if(tempScore > highScores[4]['Value']){
+                        var i = 4;
+                        while( i>1 && tempScore > highScores[i-1]['Value']){
+                            i=i-1;
+                            console.log("i: ",i)
+                        }
+                        console.log("i2: ",i);
+                        console.log("tempScore1:", highScores);
+                        // var newHighScores = Object.create(highScores);
+                        for(var k=4; k>i;k--){
+                            const tempValue = highScores[k-1]['Value'];
+                            const tempName = highScores[k-1]['Name'];
+                            highScores[k]['Value'] = tempValue;
+                            highScores[k]['Name'] = tempName;
+                        }
+                        console.log("tempScore2:", highScores);
+                        highScores[i]['Value']=tempScore;
+                        highScores[i]['Name']=name;
+                        console.log("tempScore3:", highScores);
+                        docRef.update(
+                            highScores)
                     }
-                    console.log("i2: ",i);
-                    console.log("tempScore1:", highScores);
-                    // var newHighScores = Object.create(highScores);
-                    for(var k=4; k>i;k--){
-                        const tempValue = highScores[k-1]['Value'];
-                        const tempName = highScores[k-1]['Name'];
-                        highScores[k]['Value'] = tempValue;
-                        highScores[k]['Name'] = tempName;
-                    }
-                    console.log("tempScore2:", highScores);
-                    highScores[i]['Value']=tempScore;
-                    highScores[i]['Name']=name;
-                    console.log("tempScore3:", highScores);
-                    docRef.update(
-                        highScores)
+                    console.log("Name: "+name);
                 }
-                console.log("Name: "+name)
                 highScore(counter);
                 toggle_visibility();
                 document.getElementById("game-over").innerHTML = "Game Over | " +
