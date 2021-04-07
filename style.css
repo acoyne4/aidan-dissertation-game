@@ -71,9 +71,8 @@ p{
     box-sizing: border-box;
 	width: 300px;
 	height: auto;
-	border-radius: 1px;
-	position: absolute;
-	top: 400px;
+	position: relative;
+	top: 200px;
 	left: 50%;
 	transform: translate(-50%);
 	z-index: 1;
@@ -148,7 +147,6 @@ p{
 
 /* The popup form - hidden by default */
 .form-popup {
-  display: visible;
   position: relative;
   border: 3px solid #f1f1f1;
   z-index: 9;
