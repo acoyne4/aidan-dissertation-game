@@ -36,10 +36,14 @@ function openForm() {
 function gameRef(){
   console.log("str.replace", name.replace(/\s/g,"") == "");
     if (isEmpty(name) || name=="anonymous"){
+        console.log("No name saved")
         window.location.href = "login.html";
     }
-   else
+   else{
+       console.log("Name saved")
        window.location.href = "game.html";
+    }
+
 }
 
 function isEmpty(str) {
