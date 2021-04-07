@@ -1,22 +1,22 @@
-var name = getCookie("SMDCookie");
+var namex = getCookie("SMDCookie");
 
 function submitForm(){
     console.log("SUBMIT FORM")
-    const name = document.getElementById("usernamex").value;
-    setCookie("SMDCookie",name,7);
+    namex = document.getElementById("usernamex").value;
+    setCookie("SMDCookie",namex,7);
     window.location.href = "game.html";
 }
 
 function closeForm() {
     console.log("CLOSE FORM")
-    const name = "anonymous";
-    setCookie("SMDCookie",name,7);
+    namex = "anonymous";
+    setCookie("SMDCookie",namex,7);
     window.location.href = "game.html";
 }
 
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+// function openForm() {
+//   document.getElementById("myForm").style.display = "block";
+// }
 
 // var input = document.getElementById("usernamex");
 
@@ -34,9 +34,9 @@ function openForm() {
 // });
 
 function gameRef(){
-  console.log("str.replace", name.replace(/\s/g,"") == "");
-    if (isEmpty(name) || name=="anonymous"){
-        console.log("No name saved")
+  console.log("str.replace", namex.replace(/\s/g,"") == "");
+    if (isEmpty(namex) || namex=="anonymous"){
+        console.log("No name saved", namex)
         window.location.href = "login.html";
     }
    else{
