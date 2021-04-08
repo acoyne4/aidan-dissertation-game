@@ -1,6 +1,5 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
-
 function submitForm() {
     namex = document.getElementById("usernamex").value;
     setCookie("SMDCookie", namex, 7);
