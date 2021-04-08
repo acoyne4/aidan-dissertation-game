@@ -1,5 +1,20 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
+
+
+var firebaseConfig = {
+    apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
+    authDomain: "aidan-dissertation.firebaseapp.com",
+    projectId: "aidan-dissertation",
+    storageBucket: "aidan-dissertation.appspot.com",
+    messagingSenderId: "135016153618",
+    appId: "1:135016153618:web:853ef8b1f458f3f5e24ecb",
+    measurementId: "G-PDK9P9W750"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
 function submitForm() {
     namex = document.getElementById("usernamex").value;
     setCookie("SMDCookie", namex, 7);
