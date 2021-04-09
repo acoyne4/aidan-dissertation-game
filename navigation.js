@@ -89,17 +89,18 @@ function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
     setCookie("TimeCookie", value, 14);
 }
-if (time) {
-    var time = setInterval(function () {
-        var counter = 0;
-        counter++;
-        reset_counter(counter);
-        docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
-            {merge: true});
-
-        }, 1000);
-
-
-} else {
+if (!time) {
     setCookie("TimeCookie", 0, 14);
+    time = 0;
 }
+
+var time_count = setInterval(function () {
+    var counter = 0;
+    counter++;
+    reset_counter(counter);
+    docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
+        {merge: true});
+    }, 1000);
+
+
+
