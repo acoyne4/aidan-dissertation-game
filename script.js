@@ -15,6 +15,7 @@ if (time) {
     }, 1000);
 }
 if (highScores) {
+    console.log('This is working in script');
     document.getElementById("firstName").innerHTML = highScores[1]['Name'];
     document.getElementById("secondName").innerHTML = highScores[2]['Name'];
     document.getElementById("thirdName").innerHTML = highScores[3]['Name'];
