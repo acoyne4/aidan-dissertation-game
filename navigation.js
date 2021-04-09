@@ -83,6 +83,7 @@ function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
     id = getCookie("IdCookie");
     docRefTime.set({[id] : value});
+    console.log('id' + id);
 
     setCookie("TimeCookie", value, 14);
 }
