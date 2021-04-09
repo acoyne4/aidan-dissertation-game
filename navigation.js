@@ -1,14 +1,32 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
+var id = getCookie("IdCookie");
+console.log('id ' + id);
+var firebaseConfig = {
+    apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
+    authDomain: "aidan-dissertation.firebaseapp.com",
+    projectId: "aidan-dissertation",
+    storageBucket: "aidan-dissertation.appspot.com",
+    messagingSenderId: "135016153618",
+    appId: "1:135016153618:web:853ef8b1f458f3f5e24ecb",
+    measurementId: "G-PDK9P9W750"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+var firestore = firebase.firestore();
+const docRefTime = firestore.collection("highScore").doc("time");
+
 function submitForm() {
     namex = document.getElementById("usernamex").value;
-    setCookie("SMDCookie", namex, 7);
+    setCookie("SMDCookie", namex, 14);
     window.location.href = "game.html";
 }
 
 function closeForm() {
     namex = "anonymous";
-    setCookie("SMDCookie", namex, 7);
+    setCookie("SMDCookie", namex, 14);
     window.location.href = "game.html";
 }
 
@@ -50,18 +68,37 @@ function getCookie(cname) {
     return "";
 }
 
-function reset_counter(seconds) {
+function makeid(length) {
+    var result           = [];
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result.push(characters.charAt(Math.floor(Math.random() *
+ charactersLength)));
+   }
+   return result.join('');
+}
+console.log('This functions');
+function reset_counter(seconds, id) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    setCookie("TimeCookie", value, 7);
+    docRefTime.set({[id] : value});
+    console.log('id' + id);
+    setCookie("TimeCookie", value, 14);
 }
 
-if (time) {
-    var time = setInterval(function () {
-        var counter = 0;
-        counter++;
-        reset_counter(counter);
-    }, 1000);
+if (id) {
+    if (time) {
+        var time = setInterval(function () {
+            var counter = 0;
+            counter++;
+            reset_counter(counter, id);
+        }, 1000);
 
-} else {
-    setCookie("TimeCookie", 0, 7);
+    } else {
+        setCookie("TimeCookie", 0, 14);
+    }
+
+}
+else{
+    setCookie("IdCookie", makeid(10), 14);
 }
