@@ -18,22 +18,22 @@
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-<!--    <a href="#home" class="w3-bar-item w3-button"></a>-->
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="index.html" class="w3-bar-item w3-button">About</a>
-      <a href="game.html" onclick="gameRef(); return false;" class="w3-bar-item w3-button">The Game</a>
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <!--    <a href="#home" class="w3-bar-item w3-button"></a>-->
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="index.html" class="w3-bar-item w3-button">About</a>
+            <a href="game.html" onclick="gameRef(); return false;" class="w3-bar-item w3-button">The Game</a>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
     <img class="w3-image" src="img/crypto-pic.jpg" alt="BitCoin" max-width="2000" max-height="600">
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
 
 </header>
 
@@ -49,17 +49,31 @@
                 <img src="img/change-charity.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting"
                      width="600" height="750">
             </div>
-            <p class="w3-large">Cryptocurrencies are becoming an increasingly popular form of donation. Fidelity
+            <p class="w3-large">Cryptocurrencies are an emerging and increasingly popular form of charity donation.
+                Nonprofits such as <a
+                        href="https://www.savethechildren.org/us/ways-to-help/ways-to-give/ways-to-help/cryptocurrency-donation">Save
+                    the Children</a> and UNICEF are supporting and accepting crypto donations. Fidelity
                 Charitable noted that cryptocurrency are the fastest growing category of assets donated, growing 140%
-                faster than real estate, stock shares, and other illiquid assets. Cryptocurrency donations bring a
-                number of benefits to the sector. It is faster, cheaper, and more transparent than fiat currency
-                donation.
+                faster than real estate, stock shares, and other illiquid assets. A <a
+                        href="https://www.givingtuesday.org/blog/benefits-accepting-crypto-bitcoin-donations-givingtuesday">Global
+                    NGO Technology Report</a>
+                similarly found that cryptocurrency donations represent 1-5% of the used payment method for charitable
+                donations with a +100% growth in some countries. The popularity of cryptocurrency donations largely
+                comes from the benefits they bring to the sector. More money goes into the hands of the charity with
+                crypto currency donations because of cheap transcation costs. Crypto donations are faster and are
+                completely transparent.
 
-                This project aims to capitalize on the trend of cryptocurrency donation by creating an in-browser crypto miner as a new form of charity donation. Several charities have implemented group cryptocurrency pools to raise funds such
+                This project aims to capitalize on the trend of cryptocurrency donation by investigating the feasiblity
+                of creating an in-browser crypto
+                miner as a new form of charity donation. Several charities have implemented group cryptocurrency pools
+                to raise funds such
                 as
                 <a href="https://www.theguardian.com/global-development/2018/feb/06/unicef-recruits-gamers-mine-ethereum-aid-syrian-children#:~:text=The%20UN's%20children's%20agency%2C%20Unicef,raise%20money%20for%20Syrian%20children.&text=Unicef's%20Game%20Chaingers%20scheme%20recruits,the%20currency%20for%20Syrian%20children.">UNICEF</a>.
-              However, it has not been widely explored in the form of in-browser miners, especially after the discontinuation of CoinHive. The purpose of this website is to test user engagement and determine if in-browser mining coudl be a feasible method of charity donation in the future.
-              </p>
+                However, crypto-donation has not been widely explored in the form of in-browser miners, especially after
+                the
+                discontinuation of CoinHive. The purpose of this website is to test user engagement and determine if
+                in-browser mining could be a new method of crowd fundraising for charity in the future.
+            </p>
         </div>
     </div>
     <hr>
@@ -69,47 +83,52 @@
 
         </div>
         <div class="w3-padding w3-col s6 w3 w3-center">
-<!--            <h1 class="w3-center">About this Project and Website</h1><br>-->
+            <!--            <h1 class="w3-center">About this Project and Website</h1><br>-->
             <h4>The Problem</h4>
-            <p class="w3-text-grey" style="text-align:left" style="padding: 10px">In-browser mining is incredibly inefficient. Most crypto mining are done on machines
-                with graphic cards.
-                To be profitable, there must be a large number of individuals mining for a long period of time.
-                Therefore, there must be a large
-                amount of user engagement.</p>
-            <p class="w3-text-grey" style="text-align:left">Secondly, most in-browser miners used CoinHive to mine Monero. CoinHive became
-                discontinued in 2018, resulting in a large number of these websites and miners to become obsolete.</p>
+            <p class="w3-text-grey" style="text-align:left" style="padding: 10px">In-browser mining is incredibly
+                inefficient. Most crypto mining is done on machines with sophisticated graphic cards. To be profitable
+                on normal computers, there must be a large number of individuals mining for a long period of time.
+            </p>
+            <p class="w3-text-grey" style="text-align:left">Secondly, most in-browser miners used CoinHive to mine
+                Monero. CoinHive became discontinued in 2018, resulting in a large number of these websites and miners
+                to become obsolete without many alternatives.</p>
             <br>
 
             <h4>The Interdiciplinary Solution: Game Elements</h4>
-            <p class="w3-text-grey" style="text-align:left">The solution is to increase engagement to keep users on the miner for a long period
-                of time. In terms of in-browser methods to improve user engagement, games have often been implemented to entertain users.
-              The longer you are on the website playing a game, the more your computer mines and the more donations is given to the charity.
-                For this purpose, a simple game that largely replicates the Google Chrome dinosaur game is presented to
-                the user with a few gaming elements that increases engagement.</p><br>
+            <p class="w3-text-grey" style="text-align:left">The solution being explored with this website is to increase
+                user engagement by using gamification techniques. Motivation can be internally motivated through
+                altruism and externally motivated through rewards. The altruistic act of charity drives internal
+                motivation for users to stay on the browser. Meanwhile, a simple jump game drives external motivation
+                through points and a leaderboard. The user gains the reward of  recognition by staying on the website
+                for a long enough period to achieve one of the top scores. Additionally, a timer shows how long a user
+                has been on the website and there will be a leaderboard of those who have been on the miner the longest
+                implemented in the future.
+            </p><br>
         </div>
         <div class="w3-padding w3-col s6 w3 w3-center">
             <h4>The Project: </h4>
-            <p class="w3-text-grey" style="text-align:left">This project is to test the feasibility of using a game to improve the feasibility
-                of in-browser
-                mining for charity purposes. The website does not currently have a miner, and is more used as a test to
-                see user engagement
-                and determine mining profitability.
+            <p class="w3-text-grey" style="text-align:left">This project is to test the feasibility of using a game to
+                improve the feasibility of in-browser mining for charity purposes. The website does not currently have a
+                miner, and is used as a test to determine user engagement and calculate mining profitability.
 
             <h4>The Cryptocurrency</h4>
-            <p class="w3-text-grey" style="text-align:left">In the future, the website will use <a href="https://www.coinimp.com/">CoinImp</a>,
+            <p class="w3-text-grey" style="text-align:left">In the future, the website will potentially use services like <a
+                    href="https://www.coinimp.com/">CoinImp</a>,
                 a service that uses JavaScript for Browser Mining. It uses visitor CPU resources when you are on the
                 website in replacement of advertisements.</p><br>
 
             <h4>What happens when you click 'The Game'</h4>
-            <p class="w3-text-grey" style="text-align:left">This website is simply examining how users will interact with the game and if it
-                functions to keep people on it for a long enough time. There are currently no mining scripts that will
-              run on your browser.</p><br>
+            <p class="w3-text-grey" style="text-align:left">This website is simply examining how users will interact
+                with the game and if it functions to keep people on it for a long enough time. There are currently no
+                mining scripts that will run on your browser. Cookies will be stored only for 14 days, which is the
+                test period of the project. Everything else is anonymous and no other data is collected.
+            </p><br>
 
         </div>
 
-  </div>
+    </div>
 
-  <hr>
+    <hr>
 
 </div>
 

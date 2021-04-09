@@ -1,13 +1,11 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
 var id = getCookie("IdCookie");
-console.log('This functions');
-if (!id){
+
+if (!id) {
     setCookie("IdCookie", makeid(10), 14);
     id = getCookie("IdCookie");
 }
-
-console.log('id ' + id);
 
 var firebaseConfig = {
     apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
@@ -76,19 +74,21 @@ function getCookie(cname) {
 }
 
 function makeid(length) {
-    var result           = [];
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = [];
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result.push(characters.charAt(Math.floor(Math.random() *
- charactersLength)));
-   }
-   return result.join('');
+    for (var i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() *
+            charactersLength)));
+    }
+    return result.join('');
 }
+
 function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
     setCookie("TimeCookie", value, 14);
 }
+
 if (!time) {
     setCookie("TimeCookie", 0, 14);
     time = 0;
@@ -100,7 +100,5 @@ var time_count = setInterval(function () {
     reset_counter(counter);
     docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
         {merge: true});
-    }, 1000);
-
-
+}, 1000);
 
