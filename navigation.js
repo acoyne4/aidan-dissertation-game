@@ -83,20 +83,20 @@ function makeid(length) {
 }
 function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    // console.log('id: ' + id);
+    console.log('id: ' + id);
     setCookie("TimeCookie", value, 14);
 }
-//
-// if (!id){
-//     setCookie("IdCookie", makeid(10), 14);
-// }
+
+if (!id){
+    setCookie("IdCookie", makeid(10), 14);
+}
 if (time) {
     var time = setInterval(function () {
         var counter = 0;
         counter++;
         console.log('id before reset_counter' + id);
         reset_counter(counter);
-        // docRefTime.set({[getCookie("IdCookie")] : parseInt(getCookie("TimeCookie"))});
+        docRefTime.set({[getCookie("IdCookie")] : parseInt(getCookie("TimeCookie"))});
         }, 1000);
 
 } else {
