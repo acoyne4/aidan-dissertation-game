@@ -93,7 +93,8 @@ if (time && id) {
             var counter = 0;
             counter++;
             reset_counter(counter);
-            docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))});
+            docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
+                {merge: true});
 
         }, 1000);
 
