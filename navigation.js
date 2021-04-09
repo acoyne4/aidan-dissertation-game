@@ -95,7 +95,7 @@ if (time) {
         var counter = 0;
         counter++;
         console.log('id before reset_counter' + id);
-        reset_counter(counter, id);
+        reset_counter(counter);
         // docRefTime.set({[getCookie("IdCookie")] : parseInt(getCookie("TimeCookie"))});
         }, 1000);
 
