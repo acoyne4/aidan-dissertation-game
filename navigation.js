@@ -79,22 +79,19 @@ function makeid(length) {
    return result.join('');
 }
 console.log('This functions');
-function reset_counter(seconds) {
+function reset_counter(seconds, id) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    id = getCookie("IdCookie");
     docRefTime.set({[id] : value});
     console.log('id' + id);
-
     setCookie("TimeCookie", value, 14);
 }
 
 if (id) {
-
     if (time) {
         var time = setInterval(function () {
             var counter = 0;
             counter++;
-            reset_counter(counter);
+            reset_counter(counter, id);
         }, 1000);
 
     } else {
