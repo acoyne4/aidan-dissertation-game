@@ -78,7 +78,7 @@ function makeid(length) {
    }
    return result.join('');
 }
-
+console.log('This functions');
 function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
     id = getCookie("IdCookie");
@@ -89,7 +89,6 @@ function reset_counter(seconds) {
 }
 
 if (id) {
-
 
     if (time) {
         var time = setInterval(function () {
