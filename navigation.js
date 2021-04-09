@@ -1,7 +1,7 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
 var id = getCookie("IdCookie");
-
+console.log('id ' + id);
 var firebaseConfig = {
     apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
     authDomain: "aidan-dissertation.firebaseapp.com",

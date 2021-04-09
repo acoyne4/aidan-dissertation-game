@@ -87,6 +87,7 @@ function restart() {
     counter = 0;
     location.reload()
 }
+console.log('This is working in script');
 
 var checkDead = setInterval(function () {
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
