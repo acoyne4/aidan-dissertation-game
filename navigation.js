@@ -1,7 +1,10 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
 var id = getCookie("IdCookie");
+console.log('This functions');
+
 console.log('id ' + id);
+
 var firebaseConfig = {
     apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
     authDomain: "aidan-dissertation.firebaseapp.com",
@@ -78,27 +81,24 @@ function makeid(length) {
    }
    return result.join('');
 }
-console.log('This functions');
-function reset_counter(seconds, id) {
+function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    docRefTime.set({[id] : value});
-    console.log('id' + id);
+    console.log('id: ' + id);
     setCookie("TimeCookie", value, 14);
 }
 
-if (id) {
-    if (time) {
-        var time = setInterval(function () {
-            var counter = 0;
-            counter++;
-            reset_counter(counter, id);
+if (!id){
+    setCookie("IdCookie", makeid(10), 14);
+}
+if (time) {
+    var time = setInterval(function () {
+        var counter = 0;
+        counter++;
+        console.log('id before reset_counter' + id);
+        reset_counter(counter, id);
+        docRefTime.set({[getCookie("IdCookie")] : parseInt(getCookie("TimeCookie"))});
         }, 1000);
 
-    } else {
-        setCookie("TimeCookie", 0, 14);
-    }
-
-}
-else{
-    setCookie("IdCookie", makeid(10), 14);
+} else {
+    setCookie("TimeCookie", 0, 14);
 }
