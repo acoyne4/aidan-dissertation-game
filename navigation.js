@@ -83,7 +83,7 @@ function makeid(length) {
 }
 function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    console.log('id: ' + id);
+    // console.log('id: ' + id);
     setCookie("TimeCookie", value, 14);
 }
 //
