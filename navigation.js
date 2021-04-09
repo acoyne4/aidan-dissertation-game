@@ -1,6 +1,6 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
-
+var id = getCookie("IdCookie");
 
 var firebaseConfig = {
     apiKey: "AIzaSyAx149e4_U8sWHNoe8al65EepCD5wiPQ1c",
@@ -15,15 +15,18 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+var firestore = firebase.firestore();
+const docRefTime = firestore.collection("highScore").doc("time");
+
 function submitForm() {
     namex = document.getElementById("usernamex").value;
-    setCookie("SMDCookie", namex, 7);
+    setCookie("SMDCookie", namex, 14);
     window.location.href = "game.html";
 }
 
 function closeForm() {
     namex = "anonymous";
-    setCookie("SMDCookie", namex, 7);
+    setCookie("SMDCookie", namex, 14);
     window.location.href = "game.html";
 }
 
@@ -65,18 +68,40 @@ function getCookie(cname) {
     return "";
 }
 
-function reset_counter(seconds) {
-    var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    setCookie("TimeCookie", value, 7);
+function makeid(length) {
+    var result           = [];
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result.push(characters.charAt(Math.floor(Math.random() *
+ charactersLength)));
+   }
+   return result.join('');
 }
 
-if (time) {
-    var time = setInterval(function () {
-        var counter = 0;
-        counter++;
-        reset_counter(counter);
-    }, 1000);
+function reset_counter(seconds) {
+    var value = (parseInt(getCookie("TimeCookie")) + seconds);
+    id = getCookie("IdCookie");
+    docRefTime.set({[id] : value});
 
-} else {
-    setCookie("TimeCookie", 0, 7);
+    setCookie("TimeCookie", value, 14);
+}
+
+if (id) {
+
+
+    if (time) {
+        var time = setInterval(function () {
+            var counter = 0;
+            counter++;
+            reset_counter(counter);
+        }, 1000);
+
+    } else {
+        setCookie("TimeCookie", 0, 14);
+    }
+
+}
+else{
+    setCookie("IdCookie", makeid(10), 14);
 }
