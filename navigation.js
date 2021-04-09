@@ -2,6 +2,10 @@ var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
 var id = getCookie("IdCookie");
 console.log('This functions');
+if (!id){
+    setCookie("IdCookie", makeid(10), 14);
+    id = getCookie("IdCookie");
+}
 
 console.log('id ' + id);
 
@@ -83,23 +87,19 @@ function makeid(length) {
 }
 function reset_counter(seconds) {
     var value = (parseInt(getCookie("TimeCookie")) + seconds);
-    console.log('id: ' + id);
     setCookie("TimeCookie", value, 14);
 }
-
-if (time && id) {
+if (time) {
     var time = setInterval(function () {
-
-            var counter = 0;
-            counter++;
-            reset_counter(counter);
-            docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
-                {merge: true});
+        var counter = 0;
+        counter++;
+        reset_counter(counter);
+        docRefTime.set({[getCookie("IdCookie")]: parseInt(getCookie("TimeCookie"))},
+            {merge: true});
 
         }, 1000);
 
 
 } else {
     setCookie("TimeCookie", 0, 14);
-    setCookie("IdCookie", makeid(10), 14);
 }
