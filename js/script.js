@@ -4,6 +4,7 @@ var counter = 0;
 var name = getCookie("SMDCookie");
 var highScores = getCookie("HighScore");
 var time = getCookie("TimeCookie")
+var consent = getCookie("ConsentCookie")
 
 var notBlock = true;
 if (time) {
