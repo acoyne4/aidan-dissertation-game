@@ -1,6 +1,12 @@
 var namex = getCookie("SMDCookie");
 var time = getCookie("TimeCookie");
 var id = getCookie("IdCookie");
+var consent = getCookie("ConsentCookie")
+
+if (!consent) {
+    setCookie("ConsentCookie", false, 14)
+    consent = getCookie("ConsentCookie")
+}
 
 if (!id) {
     setCookie("IdCookie", makeid(10), 14);
@@ -50,7 +56,7 @@ function isEmpty(str) {
 }
 
 function setCookie(name, value, days) {
-    if (days) {
+    if (days && consent) {
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         var expires = "; expires=" + date.toGMTString();
@@ -102,3 +108,9 @@ var time_count = setInterval(function () {
         {merge: true});
 }, 1000);
 
+
+function consentFunction() {
+    document.getElementById("cookiebanner").style.visibility = 'hidden';
+    setCookie("ConsentCookie", true, 14);
+    consent = true;
+}

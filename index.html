@@ -99,7 +99,7 @@
                 user engagement by using gamification techniques. Motivation can be internally motivated through
                 altruism and externally motivated through rewards. The altruistic act of charity drives internal
                 motivation for users to stay on the browser. Meanwhile, a simple jump game drives external motivation
-                through points and a leaderboard. The user gains the reward of  recognition by staying on the website
+                through points and a leaderboard. The user gains the reward of recognition by staying on the website
                 for a long enough period to achieve one of the top scores. Additionally, a timer shows how long a user
                 has been on the website and there will be a leaderboard of those who have been on the miner the longest
                 implemented in the future.
@@ -112,10 +112,9 @@
                 miner, and is used as a test to determine user engagement and calculate mining profitability.
 
             <h4>The Cryptocurrency</h4>
-            <p class="w3-text-grey" style="text-align:left">In the future, the website will potentially use services like <a
-                    href="https://www.coinimp.com/">CoinImp</a>,
-                a service that uses JavaScript for Browser Mining. It uses visitor CPU resources when you are on the
-                website in replacement of advertisements.</p><br>
+            <p class="w3-text-grey" style="text-align:left">In the future, the website will potentially use services
+                like CoinLoot, which is a service that uses JavaScript for Browser Mining. It uses visitor CPU resources
+                when you are on the website in replacement of advertisements.</p><br>
 
             <h4>What happens when you click 'The Game'</h4>
             <p class="w3-text-grey" style="text-align:left">This website is simply examining how users will interact
@@ -124,6 +123,13 @@
                 test period of the project. Everything else is anonymous and no other data is collected.
             </p><br>
 
+            <h4>The Cookies being used</h4>
+            <p class="w3-text-grey" style="text-align:left">First-party functional cookies are used to store your
+                username for personalization and enhanced functionality. First-party Performance cookies are used to
+                collect insights into how long a user is on the website. All information of these cookies are aggregated
+                and therefore, anonymous. If you do not allow these cookies, some services will not be able to function
+                properly.</p>
+
         </div>
 
     </div>
@@ -131,7 +137,14 @@
     <hr>
 
 </div>
+<div class="cookieconsent" id="cookiebanner"
+     style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;visibility:visible">
+    This site uses cookies. By continuing to use this website, you agree to their use. See more about the cookies we use
+    in the 'About this Website' section.
+    <input type="button" id="consent" style="color:black;" value="I Agree" onclick="consentFunction()">
+</div>
+
 
 </body>
-<script src="./navigation.js" crossorigin="anonymous"></script>
+<script src="js/navigation.js" crossorigin="anonymous"></script>
 </html>
